@@ -3,6 +3,7 @@ import 'package:fashion_app/common/utils/kcolors.dart';
 import 'package:fashion_app/common/utils/kstrings.dart';
 import 'package:fashion_app/common/widgets/app_style.dart';
 import 'package:fashion_app/common/widgets/custom_button.dart';
+import 'package:fashion_app/common/widgets/reusable_text.dart';
 import 'package:fashion_app/const/resource.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -38,7 +39,7 @@ class WelcomeScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20.h),
-            GradientBtn(
+            CustomButton(
               text: AppText.kGetStarted,
               btnHieght: 35,
               radius: 20,
@@ -47,9 +48,26 @@ class WelcomeScreen extends StatelessWidget {
                 ///TODO: Uncomment the Storage
                 // Storage().setBool('firstOpen', true);
 
-                context.go('home');
+                context.go('/home');
               },
             ),
+            SizedBox(height: 20.h),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ReusableText(
+                    text: 'Already have an account?',
+                    style: appStyle(12, Kolors.kDark, FontWeight.normal)),
+                TextButton(
+                    onPressed: () {
+                      context.go('/login');
+                    },
+                    child: const Text(
+                      'Sign In',
+                      style: TextStyle(fontSize: 12, color: Colors.blue),
+                    ))
+              ],
+            )
           ],
         ),
       ),

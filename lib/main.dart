@@ -1,10 +1,13 @@
 import 'package:fashion_app/common/utils/app_routes.dart';
 import 'package:fashion_app/common/utils/environment.dart';
 import 'package:fashion_app/common/utils/kstrings.dart';
+import 'package:fashion_app/src/auth/controllers/password_notifier.dart';
 import 'package:fashion_app/src/categories/controllers/category_notifier.dart';
 import 'package:fashion_app/src/entrypoint/controllers/bottom_tab_notifier.dart';
 import 'package:fashion_app/src/home/controllers/home_tab_notifier.dart';
 import 'package:fashion_app/src/onboarding/controllers/onboarding_notifier.dart';
+import 'package:fashion_app/src/products/controllers/color_sizes_notifier.dart';
+import 'package:fashion_app/src/products/controllers/product_notifier.dart';
 import 'package:fashion_app/src/splashscreen/views/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -26,6 +29,9 @@ void main() async {
       ChangeNotifierProvider(create: (_) => TabIndexNotifier()),
       ChangeNotifierProvider(create: (_) => CategoryNotifier()),
       ChangeNotifierProvider(create: (_) => HomeTabNotifier()),
+      ChangeNotifierProvider(create: (_) => ProductNotifier()),
+      ChangeNotifierProvider(create: (_) => ColorSizesNotifier()),
+      ChangeNotifierProvider(create: (_) => PasswordNotifier()),
     ],
     child: const MyApp(),
   ));

@@ -7,11 +7,11 @@ import 'package:provider/provider.dart';
 
 class PasswordField extends StatelessWidget {
   const PasswordField({
-    Key? key,
+    super.key,
     required this.controller,
     this.focusNode,
     this.radius,
-  }) : super(key: key);
+  });
 
   final TextEditingController controller;
   final FocusNode? focusNode;

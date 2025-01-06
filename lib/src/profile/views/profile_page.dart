@@ -5,12 +5,16 @@ import 'package:fashion_app/common/widgets/app_style.dart';
 import 'package:fashion_app/common/widgets/custom_button.dart';
 import 'package:fashion_app/common/widgets/help_bottom_sheet.dart';
 import 'package:fashion_app/common/widgets/reusable_text.dart';
+import 'package:fashion_app/src/auth/controllers/auth_notifier.dart';
+import 'package:fashion_app/src/auth/models/profile_model.dart';
 import 'package:fashion_app/src/auth/views/login_page.dart';
+import 'package:fashion_app/src/entrypoint/controllers/bottom_tab_notifier.dart';
 import 'package:fashion_app/src/profile/widgets/tile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -23,7 +27,9 @@ class ProfilePage extends StatelessWidget {
       return const LoginPage();
     }
     return Scaffold(
-      body: ListView(
+        body: Consumer<AuthNotifier>(builder: (context, authNotifier, child) {
+      ProfileModel? user = authNotifier.getUserData();
+      return ListView(
         children: [
           Column(
             children: [
@@ -35,7 +41,7 @@ class ProfilePage extends StatelessWidget {
               ),
               SizedBox(height: 15.h),
               ReusableText(
-                  text: 'kings@gmail.com',
+                  text: user!.email,
                   style: appStyle(11, Kolors.kGray, FontWeight.normal)),
               SizedBox(height: 7.h),
               Container(
@@ -44,7 +50,7 @@ class ProfilePage extends StatelessWidget {
                     color: Kolors.kOffWhite,
                     borderRadius: BorderRadius.circular(10)),
                 child: ReusableText(
-                    text: 'Dadad',
+                    text: user.username,
                     style: appStyle(14, Kolors.kDark, FontWeight.w600)),
               )
             ],
@@ -88,13 +94,18 @@ class ProfilePage extends StatelessWidget {
                     btnColor: Kolors.kRed,
                     btnHieght: 35,
                     btnWidth: ScreenUtil().screenWidth,
+                    onTap: () {
+                      Storage().removeKey('accessToken');
+                      context.read<TabIndexNotifier>().setIndex(0);
+                      context.go('/home');
+                    },
                   ),
                 ),
               ],
             ),
           )
         ],
-      ),
-    );
+      );
+    }));
   }
 }

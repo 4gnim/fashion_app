@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-List<Categories> userDbFromJson(String str) =>
+List<Categories> categoriesFromJson(String str) =>
     List<Categories>.from(json.decode(str).map((x) => Categories.fromJson(x)));
 
-String userDbToJson(List<Categories> data) =>
+String categoriesToJson(List<Categories> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Categories {

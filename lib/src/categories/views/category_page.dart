@@ -3,6 +3,7 @@ import 'package:fashion_app/common/widgets/app_style.dart';
 import 'package:fashion_app/common/widgets/back_button.dart';
 import 'package:fashion_app/common/widgets/reusable_text.dart';
 import 'package:fashion_app/src/categories/controllers/category_notifier.dart';
+import 'package:fashion_app/src/categories/widgets/products_by_category.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,6 +20,7 @@ class CategoryPage extends StatelessWidget {
           style: appStyle(16, Kolors.kPrimary, FontWeight.bold),
         ),
       ),
+      body: const ProductsByCategory(),
     );
   }
 }

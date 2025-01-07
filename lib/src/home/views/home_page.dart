@@ -1,5 +1,5 @@
 import 'package:fashion_app/src/home/controllers/home_tab_notifier.dart';
-import 'package:fashion_app/src/home/widgets/category_list.dart';
+import 'package:fashion_app/src/home/widgets/categories_list.dart';
 import 'package:fashion_app/src/home/widgets/custom_app_bar.dart';
 import 'package:fashion_app/src/home/widgets/home_header.dart';
 import 'package:fashion_app/src/home/widgets/home_slider.dart';
@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           SizedBox(height: 15.h),
           const HomeHeader(),
           SizedBox(height: 10.h),
-          const HomeCategoryList(),
+          const HomeCategoriesList(),
           SizedBox(height: 15.h),
           HomeTabs(tabController: _tabController),
           SizedBox(height: 15.h),

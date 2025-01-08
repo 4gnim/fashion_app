@@ -36,5 +36,6 @@ class HomeTabNotifier with ChangeNotifier {
 
   void setQueryType(QueryType q) {
     queryType = q;
+    notifyListeners();
   }
 }

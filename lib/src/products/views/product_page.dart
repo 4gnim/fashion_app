@@ -48,7 +48,14 @@ class ProductPage extends StatelessWidget {
                   child: Consumer<WishlistNotifier>(
                     builder: (context, wishlistNotifier, child) {
                       return GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          if (accessToken == null) {
+                            loginBottomSheet(context);
+                          } else {
+                            wishlistNotifier.addRemoveWishlist(
+                                productNotifier.product!.id, () {});
+                          }
+                        },
                         child: CircleAvatar(
                           backgroundColor: Kolors.kSecondaryLight,
                           child: Icon(

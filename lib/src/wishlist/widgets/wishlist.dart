@@ -1,11 +1,7 @@
 import 'package:fashion_app/common/services/storage.dart';
 import 'package:fashion_app/common/widgets/empty_screen_widget.dart';
-import 'package:fashion_app/common/widgets/empty_widget.dart';
 import 'package:fashion_app/common/widgets/login_bottom_sheet.dart';
 import 'package:fashion_app/common/widgets/shimmers/list_shimmer.dart';
-import 'package:fashion_app/const/resource.dart';
-import 'package:fashion_app/src/home/controllers/home_tab_notifier.dart';
-import 'package:fashion_app/src/products/hooks/fetch_products.dart';
 import 'package:fashion_app/src/products/widgets/staggered_tile_widget.dart';
 import 'package:fashion_app/src/wishlist/controllers/wishlist_notifier.dart';
 import 'package:fashion_app/src/wishlist/hooks/fetch_wishlist.dart';

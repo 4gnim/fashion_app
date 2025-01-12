@@ -8,6 +8,8 @@ import 'package:fashion_app/common/widgets/error_modal.dart';
 import 'package:fashion_app/common/widgets/login_bottom_sheet.dart';
 import 'package:fashion_app/common/widgets/reusable_text.dart';
 import 'package:fashion_app/const/constants.dart';
+import 'package:fashion_app/src/cart/controllers/cart_notifier.dart';
+import 'package:fashion_app/src/cart/models/create_cart_model.dart';
 import 'package:fashion_app/src/products/controllers/color_sizes_notifier.dart';
 import 'package:fashion_app/src/products/controllers/product_notifier.dart';
 import 'package:fashion_app/src/products/views/product_bottom_bar.dart';
@@ -211,7 +213,15 @@ class ProductPage extends StatelessWidget {
                 showErrorPopup(context, AppText.kCartErrorText,
                     'Error Adding to Cart', true);
               } else {
-                /// TODO: CART LOGIC
+                CreateCartModel data = CreateCartModel(
+                  product: context.read<ProductNotifier>().product!.id,
+                  quantity: 1,
+                  size: context.read<ColorSizesNotifier>().sizes,
+                  color: context.read<ColorSizesNotifier>().color,
+                );
+                String cartData = createCartModelToJson(data);
+
+                context.read<CartNotifier>().addToCart(cartData, context);
               }
             }
           },

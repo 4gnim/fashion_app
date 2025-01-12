@@ -4,6 +4,7 @@ import 'package:fashion_app/common/utils/kstrings.dart';
 import 'package:fashion_app/common/widgets/app_style.dart';
 import 'package:fashion_app/common/widgets/reusable_text.dart';
 import 'package:fashion_app/common/widgets/shimmers/list_shimmer.dart';
+import 'package:fashion_app/const/constants.dart';
 import 'package:fashion_app/src/auth/views/login_page.dart';
 import 'package:fashion_app/src/cart/controllers/cart_notifier.dart';
 import 'package:fashion_app/src/cart/hooks/fetch_cart.dart';
@@ -55,6 +56,41 @@ class CartPage extends HookWidget {
             },
           );
         }),
+      ),
+      bottomNavigationBar: Consumer<CartNotifier>(
+        builder: (context, cartNotifier, child) {
+          return GestureDetector(
+            onTap: () {},
+            child: cartNotifier.selectedCartItems.isNotEmpty
+                ? Container(
+                    padding: EdgeInsets.fromLTRB(8.w, 0, 8.w, 90.h),
+                    height: 130,
+                    decoration: BoxDecoration(
+                        borderRadius: kRadiusTop, color: Kolors.kPrimaryLight),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ReusableText(
+                            text: 'Click To Checkout',
+                            style: appStyle(15, Kolors.kWhite, FontWeight.w600),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ReusableText(
+                            text:
+                                '\$ ${cartNotifier.totalPrice.toStringAsFixed(2)}',
+                            style: appStyle(15, Kolors.kWhite, FontWeight.w600),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                : const SizedBox.shrink(),
+          );
+        },
       ),
     );
   }

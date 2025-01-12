@@ -1,11 +1,14 @@
 import 'package:fashion_app/common/services/storage.dart';
 import 'package:fashion_app/common/utils/environment.dart';
+import 'package:fashion_app/src/cart/controllers/cart_notifier.dart';
 import 'package:fashion_app/src/cart/hooks/results/cart_count_results.dart';
 import 'package:fashion_app/src/cart/models/cart_count_model.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 
-FetchCartCount fetchCartCount() {
+FetchCartCount fetchCartCount(BuildContext context) {
   final initialData = CartCountModel(cartCount: 0);
   final count = useState<CartCountModel>(initialData);
   final isLoading = useState(false);
@@ -48,6 +51,8 @@ FetchCartCount fetchCartCount() {
 
     fetchData();
   }
+
+  context.read<CartNotifier>().setRefetchCount(refetch);
 
   return FetchCartCount(
       count: count.value,

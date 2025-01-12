@@ -23,14 +23,18 @@ class CartTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<CartNotifier>(builder: (context, cartNotifier, child) {
       return GestureDetector(
-        onTap: () {},
+        onTap: () {
+          cartNotifier.selectOrDeselect(cart.id, cart);
+        },
         child: Padding(
           padding: EdgeInsets.only(bottom: 8.h),
           child: Container(
             width: ScreenUtil().screenWidth,
             height: 90.h,
             decoration: BoxDecoration(
-              color: Kolors.kWhite,
+              color: !cartNotifier.selectedCartItemsId.contains(cart.id)
+                  ? Kolors.kWhite
+                  : Kolors.kPrimaryLight.withOpacity(0.2),
               borderRadius: kRadiusAll,
             ),
             child: SizedBox(

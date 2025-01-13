@@ -2,13 +2,14 @@ import 'package:fashion_app/src/auth/views/login_page.dart';
 import 'package:fashion_app/src/auth/views/registration_page.dart';
 import 'package:fashion_app/src/categories/views/categories_page.dart';
 import 'package:fashion_app/src/categories/views/category_page.dart';
+import 'package:fashion_app/src/checkout/views/checkout_page.dart';
 import 'package:fashion_app/src/entrypoint/views/app_entrypoint.dart';
 import 'package:fashion_app/src/notification/views/notifications_page.dart';
 import 'package:fashion_app/src/onboarding/views/onboarding_page.dart';
 import 'package:fashion_app/src/products/views/product_page.dart';
 import 'package:fashion_app/src/profile/views/orders_page.dart';
 import 'package:fashion_app/src/profile/views/policy_page.dart';
-import 'package:fashion_app/src/profile/views/shipping_address_page.dart';
+import 'package:fashion_app/src/addresses/views/shipping_address_page.dart';
 import 'package:fashion_app/src/search/views/search_page.dart';
 import 'package:fashion_app/src/splashscreen/views/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -93,10 +94,10 @@ final GoRouter _router = GoRouter(
     //   builder: (context, state) => const TrackOrderPage(),
     // ),
 
-    // GoRoute(
-    //   path: '/checkout',
-    //   builder: (context, state) => const CheckoutPage(),
-    // ),
+    GoRoute(
+      path: '/checkout',
+      builder: (context, state) => const CheckoutPage(),
+    ),
 
     //   GoRoute(
     //   path: '/successful',

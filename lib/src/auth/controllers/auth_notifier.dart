@@ -7,12 +7,14 @@ import 'package:fashion_app/common/services/storage.dart';
 import 'package:fashion_app/common/utils/environment.dart';
 import 'package:fashion_app/common/utils/kstrings.dart';
 import 'package:fashion_app/common/widgets/error_modal.dart';
+import 'package:fashion_app/const/constants.dart';
 import 'package:fashion_app/src/auth/models/auth_token_model.dart';
 import 'package:fashion_app/src/auth/models/profile_model.dart';
 import 'package:fashion_app/src/entrypoint/controllers/bottom_tab_notifier.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:http/http.dart' as http;
+import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 
 class AuthNotifier with ChangeNotifier {
@@ -44,6 +46,8 @@ class AuthNotifier with ChangeNotifier {
         headers: {'Content-Type': 'application/json'},
         body: data,
       );
+
+      Logger().i(images);
 
       if (response.statusCode == 200) {
         String accessToken = accessTokenModelFromJson(response.body).authToken;

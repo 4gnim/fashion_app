@@ -84,7 +84,7 @@ class CartPage extends HookWidget {
                           padding: const EdgeInsets.all(8.0),
                           child: ReusableText(
                             text:
-                                '\$ ${cartNotifier.totalPrice.toStringAsFixed(2)}',
+                                'Rp.  ${cartNotifier.totalPrice.toStringAsFixed(3)}',
                             style: appStyle(15, Kolors.kWhite, FontWeight.w600),
                           ),
                         ),

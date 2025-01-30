@@ -5,11 +5,8 @@ import 'package:fashion_app/common/widgets/reusable_text.dart';
 import 'package:fashion_app/const/constants.dart';
 import 'package:fashion_app/src/cart/controllers/cart_notifier.dart';
 import 'package:fashion_app/src/cart/models/cart_model.dart';
-import 'package:fashion_app/src/cart/widgets/cart_counter.dart';
-import 'package:fashion_app/src/cart/widgets/update_button.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:provider/provider.dart';
 
 class CheckoutTile extends StatelessWidget {
@@ -119,7 +116,7 @@ class CheckoutTile extends StatelessWidget {
                         padding: EdgeInsets.only(right: 6.w),
                         child: ReusableText(
                             text:
-                                "\$ ${(cart.quantity * cart.product.price).toStringAsFixed(2)}",
+                                "Rp.  ${(cart.quantity * cart.product.price).toStringAsFixed(3)}",
                             style:
                                 appStyle(12, Kolors.kPrimary, FontWeight.w600)),
                       ),

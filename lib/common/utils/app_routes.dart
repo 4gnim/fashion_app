@@ -1,3 +1,4 @@
+import 'package:fashion_app/src/addresses/views/add_address.dart';
 import 'package:fashion_app/src/auth/views/login_page.dart';
 import 'package:fashion_app/src/auth/views/registration_page.dart';
 import 'package:fashion_app/src/categories/views/categories_page.dart';
@@ -74,10 +75,10 @@ final GoRouter _router = GoRouter(
       builder: (context, state) => const CategoryPage(),
     ),
 
-    // GoRoute(
-    //   path: '/addaddress',
-    //   builder: (context, state) => const AddAddress(),
-    // ),
+    GoRoute(
+      path: '/addaddress',
+      builder: (context, state) => const AddAddress(),
+    ),
 
     GoRoute(
       path: '/addresses',

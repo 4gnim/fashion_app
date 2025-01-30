@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:fashion_app/common/services/storage.dart';
 import 'package:fashion_app/common/utils/kcolors.dart';
 import 'package:fashion_app/common/widgets/app_style.dart';
 import 'package:fashion_app/common/widgets/reusable_text.dart';
@@ -37,7 +36,7 @@ class StaggeredTileWidget extends StatelessWidget {
             children: [
               Container(
                 height: i % 2 == 0 ? 163.h : 180.h,
-                color: Kolors.kPrimary,
+                color: Kolors.kOffWhite,
                 child: Stack(
                   children: [
                     CachedNetworkImage(
@@ -101,7 +100,7 @@ class StaggeredTileWidget extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 2.w),
                 child: ReusableText(
-                  text: '\$ ${product.price.toStringAsFixed(2)}',
+                  text: 'Rp.  ${product.price.toStringAsFixed(3)}',
                   style: appStyle(17, Kolors.kDark, FontWeight.w500),
                 ),
               )

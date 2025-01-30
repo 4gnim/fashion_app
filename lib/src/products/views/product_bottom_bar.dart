@@ -35,7 +35,7 @@ class ProductBottomBar extends StatelessWidget {
                         style: appStyle(14, Kolors.kGray, FontWeight.w400)),
                   ),
                   ReusableText(
-                      text: '\$ $price',
+                      text: 'Rp.  $price',
                       style: appStyle(14, Kolors.kDark, FontWeight.w600)),
                 ],
               ),

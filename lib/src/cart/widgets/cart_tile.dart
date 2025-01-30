@@ -145,7 +145,7 @@ class CartTile extends StatelessWidget {
                                 padding: EdgeInsets.only(right: 6.w),
                                 child: ReusableText(
                                     text:
-                                        "\$ ${(cart.quantity * cart.product.price).toStringAsFixed(2)}",
+                                        "Rp.  ${(cart.quantity * cart.product.price).toStringAsFixed(3)}",
                                     style: appStyle(
                                         12, Kolors.kPrimary, FontWeight.w600)),
                               ),

@@ -27,6 +27,7 @@ class AddressNotifier with ChangeNotifier {
 
   void setAddressType(String type) {
     _addressType = type;
+    notifyListeners();
   }
 
   String get addressType => _addressType;

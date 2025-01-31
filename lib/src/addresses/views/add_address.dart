@@ -7,6 +7,7 @@ import 'package:fashion_app/common/widgets/error_modal.dart';
 import 'package:fashion_app/common/widgets/reusable_text.dart';
 import 'package:fashion_app/const/constants.dart';
 import 'package:fashion_app/src/addresses/controllers/address_notifier.dart';
+import 'package:fashion_app/src/addresses/models/create_address_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -117,7 +118,17 @@ class _AddAddressState extends State<AddAddress> {
                   if (_addressController.text.isNotEmpty &&
                       _phoneController.text.isNotEmpty &&
                       addressNotifier.addressType != '') {
-                    // TODO: ADD ADDRESS
+                    CreateAddress address = CreateAddress(
+                        lat: 0.0,
+                        lng: 0.0,
+                        isDefault: addressNotifier.defaultToogle,
+                        address: _addressController.text,
+                        phone: _phoneController.text,
+                        addressType: addressNotifier.addressType);
+
+                    String data = createAddressToJson(address);
+
+                    addressNotifier.addAddress(data, context);
                   } else {
                     showErrorPopup(context, 'Missing Address Fields',
                         'Error Adding Address', false);

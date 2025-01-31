@@ -6,9 +6,16 @@ import 'package:fashion_app/common/utils/environment.dart';
 import 'package:fashion_app/common/widgets/error_modal.dart';
 import 'package:fashion_app/src/addresses/models/address_model.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:http/http.dart' as http;
 
 class AddressNotifier with ChangeNotifier {
+  Function refetchA = () {};
+
+  void setRefetch(Function r) {
+    refetchA = r;
+  }
+
   AddressModel? address;
 
   void setAddress(AddressModel a) {
@@ -90,7 +97,7 @@ class AddressNotifier with ChangeNotifier {
         },
       );
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         refetch();
       } else if (response.statusCode == 404 || response.statusCode == 400) {
         var data = apiErrorFromJson(response.body);
@@ -98,6 +105,30 @@ class AddressNotifier with ChangeNotifier {
       }
     } catch (e) {
       debugPrint(e.toString());
+    }
+  }
+
+  void addAddress(String data, BuildContext context) async {
+    String? accessToken = Storage().getString('accessToken');
+
+    try {
+      Uri url = Uri.parse('${Environment.appBaseUrl}/api/address/add');
+
+      final response = await http.delete(
+        url,
+        headers: {
+          'Authorization': 'Token $accessToken',
+          'Content-Type': 'application/json',
+        },
+      );
+
+      if (response.statusCode == 201) {
+        refetchA();
+        context.pop();
+      }
+    } catch (e) {
+      debugPrint(e.toString());
+      showErrorPopup(context, e.toString(), 'Error adding address', true);
     }
   }
 }
